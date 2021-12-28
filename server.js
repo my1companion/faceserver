@@ -51,9 +51,8 @@ const database= {
 
 }
 
-app.get('/', (req, res) =>{
-	const data = db.select('*').from('login').then(user=>	res.send(user)
-)
+app.get('/', (req, res) =>{ res.send('its fine')
+	//const data = db.select('*').from('login').then(user=>	res.send(user))
 
 }
 );
