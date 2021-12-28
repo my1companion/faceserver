@@ -18,9 +18,6 @@ const db = knex({
 	}
 })
 
-		db.select('*').from('users').then(data => {
-								console.log(data);}).catch(console.log);
-
 const database= {
 	users:[
 	{
