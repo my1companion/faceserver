@@ -11,10 +11,10 @@ app.use(cors());
 const db = knex({
 	client: 'pg',
 	connection: {
-		host:'127.0.0.1',
-		user:'postgres',
+		host:'ec2-18-213-133-45.compute-1.amazonaws.com',
+		user:'d3ppa6g39j36tv',
 		password:'1234',
-		database: 'smart-brain'
+		database: 'd3ppa6g39j36tv'
 
 	}
 })
@@ -26,7 +26,7 @@ const db = knex({
 	  // }
 		// host:'127.0.0.1',
 		// user:'postgres',
-		// password:'1234',
+	rasdlyoejmervk	// password:'1234',
 		// database: 'smart-brain'
 
 
