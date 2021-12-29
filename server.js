@@ -7,22 +7,27 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
+//process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 const db = knex({
 	client: 'pg',
 	connection: {
-		 connectionString: process.env.DATABASE_URL,
-		 ssl: {
-	     rejectUnauthorized: false
-	  }
+		host:'127.0.0.1',
+		user:'postgres',
+		password:'1234',
+		database: 'smart-brain'
+
 	}
 })
 
 
-// host:'127.0.0.1',
-// 		user:'postgres',
-// 		password:'1234',
-// 		database: 'smart-brain'
+		 // connectionString: process.env.DATABASE_URL,
+		 // ssl: {
+	  //    rejectUnauthorized: false
+	  // }
+		// host:'127.0.0.1',
+		// user:'postgres',
+		// password:'1234',
+		// database: 'smart-brain'
 
 
 const database= {
