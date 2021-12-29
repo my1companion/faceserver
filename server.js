@@ -4,17 +4,24 @@ const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex');
 const app = express();
+const { Pool } = require('pg');
 app.use(bodyParser.json());
 app.use(cors());
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0; 
-const db = knex({
-	client: 'pg',
-	connection: {
-		connectionString: process.env.DATABASE_URL,
-	  	ssl: true
-	}
-})
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
+// const db = knex({
+// 	client: 'pg',
+// 	connection: {
+// 		connectionString: process.env.DATABASE_URL,
+// 	  	ssl: true
+// 	}
+// })
 
 // {
 // 	    rejectUnauthorized: false
