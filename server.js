@@ -11,12 +11,19 @@ app.use(cors());
 const db = knex({
 	client: 'pg',
 	connection: {
-		host:'127.0.0.1',
-		user:'postgres',
-		password:'1234',
-		database: 'smart-brain'
+		 connectionString: process.env.DATABASE_URL,
+	  ssl: {
+	    rejectUnauthorized: false
+	  }
 	}
 })
+
+
+// host:'127.0.0.1',
+// 		user:'postgres',
+// 		password:'1234',
+// 		database: 'smart-brain'
+
 
 const database= {
 	users:[
@@ -50,6 +57,19 @@ const database= {
 	
 
 }
+
+.get('/db', async (req, res) => {
+    try {
+      const client = await pool.connect();
+      const result = await client.query('SELECT * FROM test_table');
+      const results = { 'results': (result) ? result.rows : null};
+      res.render('pages/db', results );
+      client.release();
+    } catch (err) {
+      console.error(err);
+      res.send("Error " + err);
+    }
+  })
 
 app.get('/', (req, res) =>{ res.send('its fine')
 	//const data = db.select('*').from('login').then(user=>	res.send(user))
