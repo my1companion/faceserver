@@ -13,7 +13,7 @@ const db = knex({
 	connection: {
 		host:'ec2-18-213-133-45.compute-1.amazonaws.com',
 		user:'d3ppa6g39j36tv',
-		password:'1234',
+		password:'4dd831400603884554710812524e5ac735ccb563d39c91a220a54d143ad89f9f',
 		database: 'd3ppa6g39j36tv'
 
 	}
