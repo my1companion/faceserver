@@ -7,28 +7,16 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-//process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
+
 const db = knex({
 	client: 'pg',
 	connection: {
-		host:'ec2-18-213-133-45.compute-1.amazonaws.com',
-		user:'d3ppa6g39j36tv',
-		password:'4dd831400603884554710812524e5ac735ccb563d39c91a220a54d143ad89f9f',
-		database: 'd3ppa6g39j36tv'
-
+		host:'127.0.0.1',
+		user:'postgres',
+		password:'1234',
+		database: 'smart-brain'
 	}
 })
-
-
-		 // connectionString: process.env.DATABASE_URL,
-		 // ssl: {
-	  //    rejectUnauthorized: false
-	  // }
-		// host:'127.0.0.1',
-		// user:'postgres',
-	rasdlyoejmervk	// password:'1234',
-		// database: 'smart-brain'
-
 
 const database= {
 	users:[
