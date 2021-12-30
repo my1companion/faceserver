@@ -173,7 +173,7 @@ app.put('/image', (req, res) =>{
 
 	let found = false;
 
-	db('user').where('id','=',id)
+	db('users').where('id','=',id)
 	.increment('entries',1)
 	.returning('entries')
 	.then(entries =>{
