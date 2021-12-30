@@ -173,12 +173,16 @@ app.put('/image', (req, res) =>{
 
 	let found = false;
 
+	db('user').where('id','=',id)
+	.increment('entries',1)
+	.returning('entries')
+	.then(entries =>{
+		res.json(entries[0]);
+	})
+	.catch(err=> res.json("unable to get entries"))
 
 
 
-	if(!found){
-	    res.json('user found');
-}
 });
 
 
