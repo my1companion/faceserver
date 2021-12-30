@@ -179,7 +179,7 @@ app.put('/image', (req, res) =>{
 			.returning('entries')
 			.then(entries => {
 				res.json(entries[0]})
-				.catch(err=> res.status(400).json('unable to connect'));
+				.catch(err=>{ res.status(400).json('unable to connect')});
 
 
 });
