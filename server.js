@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex');
+const Clarifai = require('clarifai');
 const app = express();
 const { Pool } = require('pg');
 app.use(bodyParser.json());
@@ -24,6 +25,9 @@ const db = knex({
   			}
 	}
 })
+const appClarifai = new Clarifai.App({
+ apiKey: 'f4f165208620453888ab632c7eb696b8'
+});
 
 // {
 // 	    rejectUnauthorized: false
@@ -80,6 +84,18 @@ app.get('/db', async (req, res) => {
       res.send("Error " + err);
     }
   })
+
+app.get('/apiclarifai', (req, res) =>{ 
+
+		appClarifai.models.predict(Clarifai.FACE_DETECT_MODEL,res.body.input)
+		.then(response=>{
+			res.json(response);
+		})
+		.catch(err => res.status(400).json('unable to work with API'))
+	
+
+}
+);
 
 app.get('/', (req, res) =>{ res.send('its fine')
 	//const data = db.select('*').from('login').then(user=>	res.send(user))
