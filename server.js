@@ -85,7 +85,7 @@ app.get('/db', async (req, res) => {
     }
   })
 
-app.get('/apiclarifai', (req, res) =>{ 
+app.post('/apiclarifai', (req, res) =>{ 
 
 		appClarifai.models.predict(Clarifai.FACE_DETECT_MODEL,res.body.input)
 		.then(response=>{
